@@ -11,6 +11,12 @@ import com.bumptech.glide.request.RequestOptions
 
 class ListBuahAdapter(val listBuah: ArrayList<Buah>) : RecyclerView.Adapter<ListBuahAdapter.ListViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_buah, parent, false)
         return ListViewHolder(view)
@@ -24,6 +30,7 @@ class ListBuahAdapter(val listBuah: ArrayList<Buah>) : RecyclerView.Adapter<List
             .into(holder.imgPhoto)
         holder.tvName.text = buah.name
         holder.tvDetail.text = buah.detail
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listBuah[holder.adapterPosition]) }
     }
 
     override fun getItemCount(): Int {
@@ -34,5 +41,9 @@ class ListBuahAdapter(val listBuah: ArrayList<Buah>) : RecyclerView.Adapter<List
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
         var tvDetail: TextView = itemView.findViewById(R.id.tv_item_detail)
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Buah)
     }
 }

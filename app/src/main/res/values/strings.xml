@@ -2,6 +2,10 @@
     <string name="app_name">InfoBuah</string>
     <string name="nama_buah">Nama Buah</string>
     <string name="detail">Detail</string>
-    <string name="list">List</string>
-    <string name="profil">Profil</string>
+    <string name="list">Home</string>
+    <string name="profil">About</string>
+    <string name="my_name">Luky Ana Adi Pratama</string>
+    <string name="my_email">luky3667@gmail.com</string>
+    <string name="data_nama">Nama Buah</string>
+    <string name="data_detail">Detail Buah</string>
 </resources>
